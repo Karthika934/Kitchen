@@ -58,7 +58,7 @@
             position: absolute;
             top: -52px;
             display: flex;
-            gap: 30px; /* Space between pans */
+            gap: 30px; 
         }
 
         .pan {
@@ -177,14 +177,14 @@
     
    <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
+        const today = new Date().toISOString().split("T")[0]; 
         const menuLink = document.getElementById("menuLink");
 
-        // Check if menu data exists for today's date in LocalStorage
+        
         if (localStorage.getItem(today)) {
-            menuLink.href = `menu_display.html?date=${today}`; // Set the correct URL
+            menuLink.href = `menu_display.html?date=${today}`; 
         } else {
-            menuLink.href = "#"; // Prevent navigation if no menu exists
+            menuLink.href = "#"; 
             menuLink.addEventListener("click", function (event) {
                 event.preventDefault();
                 alert("No menu available for today!");
