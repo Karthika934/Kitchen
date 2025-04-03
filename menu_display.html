@@ -204,7 +204,7 @@
       });
     }
 
-    // Update cart for a specific item in a category for a given date
+    
     function updateCart(date, category, index, change) {
       const menuData = JSON.parse(localStorage.getItem(date)) || { Breakfast: [], Lunch: [], Dinner: [] };
       if (menuData[category] && menuData[category][index]) {
