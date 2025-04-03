@@ -29,7 +29,7 @@
       z-index: -1;
       transition: background 1s ease-in-out;
     }
-    /* Sun and Moon */
+    
     .sun, .moon {
       position: fixed;
       right: 10%;
@@ -152,13 +152,13 @@
       }
     });
 
-    // Function to get a query parameter from the URL
+    
     function getQueryParam(param) {
       const params = new URLSearchParams(window.location.search);
       return params.get(param);
     }
 
-    // Display only the menu for the selected date
+   
     function displayMenu() {
       const selectedDate = getQueryParam("date");
       const menuContainer = document.getElementById("menuContainer");
@@ -168,7 +168,7 @@
         return;
       }
 
-      // Retrieve menu data stored under the selected date
+      
       const menuData = JSON.parse(localStorage.getItem(selectedDate)) || { Breakfast: [], Lunch: [], Dinner: [] };
 
       menuContainer.innerHTML = `<h2 class="menu-header">Menu for ${selectedDate}</h2>`;
@@ -190,7 +190,7 @@
               <img src="${item.image}" alt="${item.name}" onerror="this.src='default.jpg'";>
               <p><strong>${item.name}</strong></p>
               <p>Portion: ${item.quantity}</p>
-              <p>Price: $Rs{item.price}</p>
+              <p>Price: $${item.price}</p>
               <div class="quantity-controls">
                 <button onclick="updateCart('${selectedDate}', ${mealType}, ${index}, -1)">-</button>
                 <span class="quantity-text">${item.cartQuantity || 0}</span>
