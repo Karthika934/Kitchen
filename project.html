@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 60%; 
+            max-height: 100vh; 
+            background-color: #704214;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-top:-2px;
+        }
+
+        .overlay-image {
+            position: absolute;
+            bottom: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .pans-container {
+            position: absolute;
+            top: -52px;
+            display: flex;
+            gap: 30px; /* Space between pans */
+        }
+
+        .pan {
+            width: 250px;
+            height: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-text {
+            position: absolute;
+            top: 138px; 
+            left: 13%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+        }
+         .emoji {
+            position: absolute;
+            top: 127px; 
+            left: 33%;
+            transform: translateX(-50%);
+            width:80px;
+            height:auto; 
+        }
+
+
+        .menu-text a {
+            color: white;
+            text-decoration: underline;
+        }
+        .about a {
+            color: white;
+            text-decoration: underline;
+        }
+        .about {
+            position: absolute;
+            top: 139px; 
+            left: 66%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+        }
+
+         .contact a {
+            color: white;
+            text-decoration: underline;
+        }
+        .contact {
+            position: absolute;
+            top: 139px; 
+            left: 86%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+        }
+
+
+        .admin-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .admin-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .delivery-man {
+            width: 170px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            bottom: 50px;
+            right: 30px;
+        }
+
+        .highlight-text {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 21px;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.8);
+            box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.6);
+        }
+
+        .chef {
+            position: absolute;
+            left: 10px;
+            bottom: 80px;
+            width: 150px;
+            height: 470px;
+        
+    </style>
+    
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date().toISOString().split("T")[0]; // Get current date in YYYY-MM-DD format
+        const menuLink = document.getElementById("menuLink");
+
+        // Check if menu data exists for today's date in LocalStorage
+        if (localStorage.getItem(today)) {
+            menuLink.href = `menu_display.html?date=${today}`; // Set the correct URL
+        } else {
+            menuLink.href = "#"; // Prevent navigation if no menu exists
+            menuLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                alert("No menu available for today!");
+            });
+        }
+    });
+</script>
+</head>
+<body>
+    
+    <button class="admin-btn" onclick="location.href='admin_login.html'">Admin Login</button>
+    <div class="highlight-text">
+                Authentic flavors, cooked with love on firewood, delivered to your doorstep!
+     </div>
+    <div class="container">
+        <div class="image-wrapper">
+            <img src="C:\Users\kkart\OneDrive\Desktop\menu_project\kitchen.jpg" class="background-image"> 
+            
+            <div class="pans-container">
+                <div>
+                    <img src="C:\Users\kkart\OneDrive\Desktop\menu_project\ChatGPT Image Apr 2, 2025, 10_20_31 PM.png" class="pan">    
+                    <div class="menu-text">
+                        <a href="#" id="menuLink">Menu</a>
+                    </div> 
+                    <img src="emoji.png" class="emoji"> 
+                </div>
+                <div>
+                    <img src="C:\Users\kkart\OneDrive\Desktop\menu_project\ChatGPT Image Apr 2, 2025, 10_20_31 PM.png" class="pan">    
+                </div>
+                <div class="about">
+                        <a href="about_contact.html">About</a>
+                </div>
+               <div class="contact">
+                        <a href="about_contact.html">Contact</a>
+                </div>
+
+            </div>
+
+            <img src="C:\Users\kkart\OneDrive\Desktop\menu_project\women_cooking.png" class="overlay-image">
+        </div>
+
+        <img src="C:\Users\kkart\OneDrive\Desktop\menu_project\delivery_man.webp" class="delivery-man">
+        <img src="chef.png" class="chef">
+    </div>
+
+</body>
+</html>

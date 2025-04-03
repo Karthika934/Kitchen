@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Menu</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .menu-form {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .menu-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .menu-form input,
+        .menu-form select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .menu-form button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <form class="menu-form" id="menuForm">
+        <h2>Add New Menu</h2>
+
+        <label for="menuType">Type:</label>
+        <select id="menuType" required>
+            <option value="">Select Type</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+        </select>
+
+        <label for="menuDate">Date:</label>
+        <input type="date" id="menuDate" required>
+
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName" placeholder="Enter item name" required>
+
+        <label for="itemQuantity">Quantity:</label>
+        <input type="number" id="itemQuantity" placeholder="Enter quantity" required>
+
+        <label for="sufficientFor">Sufficient for:</label>
+        <input type="text" id="sufficientFor" placeholder="e.g., 2 persons" required>
+
+        <label for="itemPrice">Price:</label>
+        <input type="number" id="itemPrice" placeholder="Enter price" required>
+        <label for="itemImage">Image URL:</label>
+        <input type="url" id="itemImage" placeholder="Enter image URL" required>
+
+
+        <button type="submit">Add Menu</button>
+    </form>
+
+    <script>
+        document.getElementById('menuForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let menuDate = document.getElementById('menuDate').value;
+            let menuData = JSON.parse(localStorage.getItem(menuDate)) || { Breakfast: [], Lunch: [], Dinner: [] };
+
+            const newItem = {
+                name: document.getElementById('itemName').value,
+                quantity: document.getElementById('itemQuantity').value,
+                sufficientFor: document.getElementById('sufficientFor').value,
+                price: document.getElementById('itemPrice').value,
+                image: document.getElementById('itemImage').value || 'default.jpg'
+            };
+
+            menuData[document.getElementById('menuType').value].push(newItem);
+            localStorage.setItem(menuDate, JSON.stringify(menuData));
+
+            document.getElementById('menuForm').reset();
+            alert("Menu item added successfully!");
+        });
+    </script>
+
+</body>
+</html>
