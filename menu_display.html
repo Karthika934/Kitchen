@@ -190,7 +190,7 @@
               <img src="${item.image}" alt="${item.name}" onerror="this.src='default.jpg'";>
               <p><strong>${item.name}</strong></p>
               <p>Portion: ${item.quantity}</p>
-              <p>Price: $Rs.{item.price}</p>
+              <p>Price: $Rs{item.price}</p>
               <div class="quantity-controls">
                 <button onclick="updateCart('${selectedDate}', ${mealType}, ${index}, -1)">-</button>
                 <span class="quantity-text">${item.cartQuantity || 0}</span>
